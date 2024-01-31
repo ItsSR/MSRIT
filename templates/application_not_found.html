@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>MSRIT</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{{ url_for('static', filename='images/ramaiah.png') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="navbar" id="myNavbar">
+          <a class="nav-img">
+            <img
+              src="{{ url_for('static', filename='images/ramaiah.png') }}"
+              alt="logo"
+            />
+          </a>
+          <a href="/application/form/1">New Application</a>
+          <a class="active" href="/application/status">Application Status</a>
+          <a href="/logout" class="navbar-logout">Log out</a>
+          <a href="javascript:void(0);" class="icon" onclick="myFunction()"
+            >&#9776;</a
+          >
+        </div>
+      </nav>
+    </header>
+    <main>
+      {% include "flash_messages.html" %}
+      <div class="message">
+        <section class="container">
+          <div class="row">
+            <div class="vl">
+              <span class="vl"></span>
+            </div>
+            <div class="col">
+              <div class="message-logo">
+                <img
+                  src="{{ url_for('static', filename='images/ramaiah.png') }}"
+                  alt="logo"
+                />
+              </div>
+            </div>
+            <div class="col">
+              <h1>Application Not Found</h1>
+              <p>
+                The Application number doesn't match, please verify it in the
+                application status page.
+              </p>
+              <a href="/application/status"
+                ><button>Go to Application Status</button></a
+              >
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <footer>
+      <p>&copy; 2023 MSRIT</p>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  </body>
+</html>

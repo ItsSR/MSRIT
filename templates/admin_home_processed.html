@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>MSRIT</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{{ url_for('static', filename='images/ramaiah.png') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="navbar" id="myNavbar">
+          <a>
+            <img
+              src="{{ url_for('static', filename='images/ramaiah.png') }}"
+              alt="logo"
+            />
+          </a>
+          <a href="/admin/home/pending-applications">Pending appls</a>
+          <a href="/admin/processed-applications" class="active"
+            >Processed appls</a
+          >
+          <a href="/admin/logout" class="navbar-logout">Log out</a>
+          <a href="javascript:void(0);" class="icon" onclick="myFunction()"
+            >&#9776;</a
+          >
+        </div>
+      </nav>
+    </header>
+    <main>
+      {% include "flash_messages.html" %} {% if L|length >0 %}
+      <div class="product-details">
+        {% for dictt in L %}
+        <div class="product-container">
+          <div class="product-info">
+            <h1>Application Number: {{dictt['application_id']}}</h1>
+            <div class="product-specs">
+              <table>
+                <tr>
+                  <th>Applicant Name</th>
+                  <td>{{dictt['applicant_name']}}</td>
+                </tr>
+                <tr>
+                  <th>Applicant Department</th>
+                  <td>{{dictt['applicant_dept']}}</td>
+                </tr>
+                <tr>
+                  <th>Paper Title</th>
+                  <td>{{dictt['paper_title']}}</td>
+                </tr>
+                <tr>
+                  <th>Journal Name</th>
+                  <td>{{dictt['journal_name']}}</td>
+                </tr>
+              </table>
+            </div>
+            <div class="product-add-to-cart">
+              <a
+                href="/admin/processed-application/details/{{dictt['application_id']}}"
+              >
+                <button>View Application Details</button>
+              </a>
+            </div>
+            <p><b>Application Status: </b>{{dictt['status']}}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% else %}
+      <h1 class="no-applications">No applications processed yet.</h1>
+      {% endif %}
+    </main>
+    <footer>
+      <p>&copy; 2023 MSRIT</p>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  </body>
+</html>

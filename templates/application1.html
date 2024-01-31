@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>MSRIT</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{{ url_for('static', filename='images/ramaiah.png') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="navbar" id="myNavbar">
+          <a class="nav-img">
+            <img
+              src="{{ url_for('static', filename='images/ramaiah.png') }}"
+              alt="logo"
+            />
+          </a>
+          <a class="active" href="/application/form/1">New Application</a>
+          <a href="/application/status">Application Status</a>
+          <a href="/logout" class="navbar-logout">Log out</a>
+          <a href="javascript:void(0);" class="icon" onclick="myFunction()"
+            >&#9776;</a
+          >
+        </div>
+      </nav>
+    </header>
+    <main>
+      {% include "flash_messages.html" %}
+      <div class="login">
+        <section class="top-container">
+          <h1>Enter your details</h1>
+        </section>
+        <section class="container">
+          <form method="POST" enctype="multipart/form-data">
+            <div class="row">
+              <div class="vl">
+                <span class="vl"></span>
+              </div>
+              <div class="col">
+                <div class="application-logo">
+                  <img
+                    src="{{ url_for('static', filename='images/ramaiah.png') }}"
+                    alt="MSRIT logo"
+                  />
+                </div>
+              </div>
+              <div class="col">
+                <div class="input_wrap">
+                  <div class="input-icons">
+                    <i class="fa fa-user icon"> </i>
+                    <input
+                      type="text"
+                      placeholder=" "
+                      name="applicant_name"
+                      required
+                    />
+                    <label>Name of the Applicant</label>
+                  </div>
+                </div>
+                <div class="input_wrap">
+                  <div class="input-icons">
+                    <i class="fas fa-user-tag icon"> </i>
+                    <select
+                      name="applicant_dept"
+                      class="role-dropdown"
+                      id="designation"
+                      required
+                    >
+                      <option hidden disabled selected value>
+                        Applicant Department
+                      </option>
+                      <option value="Architecture" class="role-option">
+                        <p>Architecture</p>
+                      </option>
+                      <option
+                        value="Artificial Intelligence and Data Science"
+                        class="role-option"
+                      >
+                        <p>Artificial Intelligence and Data Science</p>
+                      </option>
+                      <option
+                        value="Artificial Intelligence and Machine Learning"
+                        class="role-option"
+                      >
+                        <p>Artificial Intelligence and Machine Learning</p>
+                      </option>
+                      <option value="Biotechnology" class="role-option">
+                        <p>Biotechnology</p>
+                      </option>
+                      <option value="Chemical Engineering" class="role-option">
+                        <p>Chemical Engineering</p>
+                      </option>
+                      <option value="Chemistry" class="role-option">
+                        <p>Chemistry</p>
+                      </option>
+                      <option value="Civil Engineering" class="role-option">
+                        <p>Civil Engineering</p>
+                      </option>
+                      <option
+                        value="Computer Science and Engineering"
+                        class="role-option"
+                      >
+                        <p>Computer Science and Engineering</p>
+                      </option>
+                      <option
+                        value="Computer Science and Engineering(AI & ML)"
+                        class="role-option"
+                      >
+                        <p>Computer Science and Engineering(AI and ML)</p>
+                      </option>
+                      <option
+                        value="Computer Science and Engineering(Cyber Security)"
+                        class="role-option"
+                      >
+                        <p>Computer Science and Engineering(Cyber Security)</p>
+                      </option>
+                      <option
+                        value="Electronics and Communication Engineering"
+                        class="role-option"
+                      >
+                        <p>Electronics and Communication Engineering</p>
+                      </option>
+                      <option
+                        value="Electronics and Instrumentation Engineering"
+                        class="role-option"
+                      >
+                        <p>Electronics and Instrumentation Engineering</p>
+                      </option>
+                      <option
+                        value="Electrical and Electronics Engineering"
+                        class="role-option"
+                      >
+                        <p>Electrical and Electronics Engineering</p>
+                      </option>
+                      <option
+                        value="Electronics and Telecommunication Engineering"
+                        class="role-option"
+                      >
+                        <p>Electronics and Telecommunication Engineering</p>
+                      </option>
+                      <option value="Humanities" class="role-option">
+                        <p>Humanities</p>
+                      </option>
+                      <option
+                        value="Industrial Engineering and Management"
+                        class="role-option"
+                      >
+                        <p>Industrial Engineering and Management</p>
+                      </option>
+                      <option
+                        value="Information Science and Engineering"
+                        class="role-option"
+                      >
+                        <p>Information Science and Engineering</p>
+                      </option>
+                      <option value="Mathematics" class="role-option">
+                        <p>Mathematics</p>
+                      </option>
+                      <option
+                        value="Master of Computer Applications(MCA)"
+                        class="role-option"
+                      >
+                        <p>Master of Computer Applications(MCA)</p>
+                      </option>
+                      <option
+                        value="Management Studies(MBA)"
+                        class="role-option"
+                      >
+                        <p>Management Studies(MBA)</p>
+                      </option>
+                      <option
+                        value="Mechanical Engineering"
+                        class="role-option"
+                      >
+                        <p>Mechanical Engineering</p>
+                      </option>
+                      <option value="Medical Electronics" class="role-option">
+                        <p>Medical Electronics</p>
+                      </option>
+                      <option value="Physics" class="role-option">
+                        <p>Physics</p>
+                      </option>
+                    </select>
+                  </div>
+                </div>
+                <div class="input_wrap">
+                  <div class="input-icons">
+                    <i class="fa-solid fa-newspaper icon"></i>
+                    <input
+                      type="text"
+                      placeholder=" "
+                      name="paper_title"
+                      required
+                    />
+                    <label>Paper Title</label>
+                  </div>
+                </div>
+                <div class="input_wrap">
+                  <div class="input-icons">
+                    <i class="fa-solid fa-book-journal-whills icon"></i>
+                    <input
+                      type="text"
+                      placeholder=" "
+                      name="journal_name"
+                      required
+                    />
+                    <label>Journal Name</label>
+                  </div>
+                </div>
+                <div class="input_wrap">
+                  <div class="input-icons">
+                    <i class="fa-solid fa-globe icon"></i>
+                    <input
+                      type="text"
+                      placeholder=" "
+                      name="sjr_website_link"
+                      required
+                    />
+                    <label>SJR Website Link</label>
+                  </div>
+                </div>
+                <div class="input_wrap">
+                  <div class="input-icons">
+                    <i class="fa-solid fa-calendar-days icon"> </i>
+                    <input
+                      type="month"
+                      placeholder=" "
+                      name="publication_month"
+                      required
+                    />
+                    <label>Publication Month</label>
+                  </div>
+                </div>
+                <div class="input_wrap">
+                  <div class="input-icons">
+                    <i class="fa fa-id-badge icon"> </i>
+                    <input type="text" placeholder=" " name="doi" required />
+                    <label>DOI</label>
+                  </div>
+                </div>
+                <div class="input_wrap">
+                  <div class="input-icons">
+                    <i class="fas fa-user-tag icon"> </i>
+                    <select
+                      name="journal_category"
+                      class="role-dropdown"
+                      id="department"
+                      required
+                    >
+                      <option hidden disabled selected value>
+                        Journal Category
+                      </option>
+                      <option value="Q1" class="role-option">
+                        <p>Q1</p>
+                      </option>
+                      <option value="Q2" class="role-option">
+                        <p>Q2</p>
+                      </option>
+                      <option value="Q3" class="role-option">
+                        <p>Q3</p>
+                      </option>
+                      <option value="Q4" class="role-option">
+                        <p>Q4</p>
+                      </option>
+                    </select>
+                  </div>
+                </div>
+                <div class="input_wrap">
+                  <div class="input-icons">
+                    <i class="fa-solid fa-calendar-days icon"> </i>
+                    <input
+                      type="month"
+                      placeholder=" "
+                      name="coverage_from"
+                      required
+                    />
+                    <label>Coverage of Journal in SJR (From)</label>
+                  </div>
+                </div>
+                <div class="input_wrap">
+                  <div class="input-icons">
+                    <i class="fa-solid fa-calendar-days icon"> </i>
+                    <input
+                      type="month"
+                      placeholder=" "
+                      name="coverage_to"
+                      required
+                    />
+                    <label>Coverage of Journal in SJR (To)</label>
+                  </div>
+                </div>
+                <input type="submit" value="Next" />
+              </div>
+            </div>
+          </form>
+        </section>
+      </div>
+    </main>
+    <footer>
+      <p>&copy; 2023 MSRIT</p>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  </body>
+</html>
